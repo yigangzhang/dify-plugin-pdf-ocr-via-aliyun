@@ -1,0 +1,56 @@
+identity:
+  name: "pdf-ocr-aliyun"
+  author: "sam-zhang"
+  label:
+    en_US: "pdf-ocr-aliyun"
+    zh_Hans: "pdf-ocr-aliyun"
+    pt_BR: "pdf-ocr-aliyun"
+description:
+  human:
+    en_US: "Send an image and extraction prompt to Aliyun OCR (Qwen-VL-OCR) and return structured JSON."
+    zh_Hans: "将图片和提取提示发送到阿里云 OCR（Qwen-VL-OCR），返回结构化 JSON。"
+    pt_BR: "Envie uma imagem e um prompt de extração para o OCR da Aliyun (Qwen-VL-OCR) e retorne JSON estruturado."
+  llm: "Given an image and a prompt describing fields to extract, use OCR and return JSON only."
+parameters:
+  - name: api_key
+    type: secret-input
+    required: false
+    label:
+      en_US: API Key
+      zh_Hans: API Key
+      pt_BR: API Key
+    human_description:
+      en_US: "Optional. Override provider API Key for this call."
+      zh_Hans: "可选。为本次调用覆盖 Provider 的 API Key。"
+      pt_BR: "Opcional. Substitui a chave de API do provedor para esta chamada."
+    llm_description: "Optional override of API key."
+    form: llm
+  - name: prompt
+    type: string
+    required: true
+    label:
+      en_US: Prompt
+      zh_Hans: 提示词
+      pt_BR: Prompt
+    human_description:
+      en_US: "Describe the fields to extract and desired JSON schema."
+      zh_Hans: "描述需要提取的字段和期望的 JSON 结构。"
+      pt_BR: "Descreva os campos a extrair e o esquema JSON desejado."
+    llm_description: "Instructions for what fields to extract and the JSON schema to return."
+    form: llm
+  - name: image_url
+    type: string
+    required: true
+    label:
+      en_US: Image URL
+      zh_Hans: 图片 URL
+      pt_BR: URL da Imagem
+    human_description:
+      en_US: "Image URL to OCR. Can be a plain URL string, JSON string, object with url/image_url/src, or a list from previous node output."
+      zh_Hans: "待识别图片的 URL。可以是纯 URL 字符串、JSON 字符串、包含 url/image_url/src 字段的对象，或上游节点返回的列表。"
+      pt_BR: "URL da imagem para OCR. Pode ser uma URL simples, string JSON, objeto com url/image_url/src, ou uma lista de um nó anterior."
+    llm_description: "Image URL to analyze (string or object with a url field)."
+    form: llm
+extra:
+  python:
+    source: tools/pdf-ocr-aliyun.py

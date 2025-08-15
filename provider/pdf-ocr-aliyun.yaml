@@ -1,0 +1,121 @@
+identity:
+  author: "sam-zhang"
+  name: "pdf-ocr-aliyun"
+  label:
+    en_US: "pdf-ocr-aliyun"
+    zh_Hans: "pdf-ocr-aliyun"
+    pt_BR: "pdf-ocr-aliyun"
+  description:
+    en_US: "convert photoscan pdf to text via aliyun ocr"
+    zh_Hans: "convert photoscan pdf to text via aliyun ocr"
+    pt_BR: "convert photoscan pdf to text via aliyun ocr"
+  icon: "icon.svg"
+
+#########################################################################################
+# If you want to support OAuth, you can uncomment the following code.
+#########################################################################################
+# oauth_schema:
+#   client_schema:
+#     - name: "client_id"
+#       type: "secret-input"
+#       required: true
+#       url: https://example.com/oauth/authorize
+#       placeholder:
+#         en_US: "Please input your Client ID"
+#         zh_Hans: "请输入你的 Client ID"
+#         pt_BR: "Insira seu Client ID"
+#       help:
+#         en_US: "Client ID is used to authenticate requests to the example.com API."
+#         zh_Hans: "Client ID 用于认证请求到 example.com API。"
+#         pt_BR: "Client ID é usado para autenticar solicitações à API do example.com."
+#       label:
+#         zh_Hans: "Client ID"
+#         en_US: "Client ID"
+#     - name: "client_secret"
+#       type: "secret-input"
+#       required: true
+#       url: https://example.com/oauth/authorize
+#       placeholder:
+#         en_US: "Please input your Client Secret"
+#         zh_Hans: "请输入你的 Client Secret"
+#         pt_BR: "Insira seu Client Secret"
+#       help:
+#         en_US: "Client Secret is used to authenticate requests to the example.com API."
+#         zh_Hans: "Client Secret 用于认证请求到 example.com API。"
+#         pt_BR: "Client Secret é usado para autenticar solicitações à API do example.com."
+#       label:
+#         zh_Hans: "Client Secret"
+#         en_US: "Client Secret"
+#   credentials_schema:
+#     - name: "access_token"
+#       type: "secret-input"
+#       label:
+#         zh_Hans: "Access Token"
+#         en_US: "Access Token"
+
+tools:
+  - tools/pdf-ocr-aliyun.yaml
+extra:
+  python:
+    source: provider/pdf-ocr-aliyun.py
+credentials_schema:
+  - name: "api_key"
+    type: "secret-input"
+    required: true
+    label:
+      en_US: "API Key"
+      zh_Hans: "API Key"
+      pt_BR: "API Key"
+    placeholder:
+      en_US: "Enter your DashScope(Alibaba Cloud) API Key"
+      zh_Hans: "请输入你的阿里云百炼(DashScope) API Key"
+      pt_BR: "Insira sua chave de API do DashScope"
+    help:
+      en_US: "Create an API Key in Alibaba Cloud Model Studio (DashScope)."
+      zh_Hans: "在阿里云模型工作室（百炼）创建 API Key。"
+      pt_BR: "Crie uma chave de API no Alibaba Cloud Model Studio (DashScope)."
+  - name: "base_url"
+    type: "text-input"
+    required: false
+    label:
+      en_US: "Base URL"
+      zh_Hans: "Base URL"
+      pt_BR: "URL Base"
+    placeholder:
+      en_US: "Optional. e.g. https://dashscope.aliyuncs.com/compatible-mode/v1"
+      zh_Hans: "可选。例如：https://dashscope.aliyuncs.com/compatible-mode/v1"
+      pt_BR: "Opcional. Ex.: https://dashscope.aliyuncs.com/compatible-mode/v1"
+    help:
+      en_US: "Leave empty to use OpenAI default; set to Aliyun OpenAI-compatible endpoint if needed."
+      zh_Hans: "留空以使用默认 OpenAI 端点；如需使用阿里云 OpenAI 兼容端点请填写。"
+      pt_BR: "Deixe em branco para usar o OpenAI padrão; defina o endpoint compatível da Aliyun se necessário."
+  - name: "model"
+    type: "text-input"
+    required: false
+    label:
+      en_US: "Model"
+      zh_Hans: "模型"
+      pt_BR: "Modelo"
+    placeholder:
+      en_US: "qwen-vl-ocr"
+      zh_Hans: "qwen-vl-ocr"
+      pt_BR: "qwen-vl-ocr"
+    help:
+      en_US: "Aliyun OCR model name. Default is qwen-vl-ocr."
+      zh_Hans: "阿里云 OCR 模型名称，默认 qwen-vl-ocr。"
+      pt_BR: "Nome do modelo OCR da Aliyun. Padrão: qwen-vl-ocr."
+  - name: "file_host_base"
+    type: "text-input"
+    required: false
+    label:
+      en_US: "File Host Base URL"
+      zh_Hans: "文件主机基础地址"
+      pt_BR: "URL Base do Host de Arquivos"
+    placeholder:
+      en_US: "e.g. https://your-dify-host"
+      zh_Hans: "例如：https://你的Dify域名"
+      pt_BR: "ex.: https://seu-host-dify"
+    help:
+      en_US: "Used to absolutize relative /files/... URLs coming from previous nodes."
+      zh_Hans: "用于将上游节点产生的相对 /files/... URL 转为绝对地址。"
+      pt_BR: "Usado para absolutizar URLs relativas /files/... vindas de nós anteriores."

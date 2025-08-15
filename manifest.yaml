@@ -1,0 +1,36 @@
+version: 0.0.1
+type: plugin
+author: sam-zhang
+name: pdf-ocr-aliyun
+label:
+  en_US: pdf-ocr-aliyun
+  ja_JP: pdf-ocr-aliyun
+  zh_Hans: pdf-ocr-aliyun
+  pt_BR: pdf-ocr-aliyun
+description:
+  en_US: convert photoscan pdf to text via aliyun ocr
+  ja_JP: convert photoscan pdf to text via aliyun ocr
+  zh_Hans: convert photoscan pdf to text via aliyun ocr
+  pt_BR: convert photoscan pdf to text via aliyun ocr
+icon: icon.svg
+icon_dark: icon-dark.svg
+resource:
+  memory: 268435456
+  permission: {}
+plugins:
+  tools:
+    - provider/pdf-ocr-aliyun.yaml
+meta:
+  version: 0.0.1
+  arch:
+    - amd64
+    - arm64
+  runner:
+    language: python
+    version: "3.12"
+    entrypoint: main
+  minimum_dify_version: null
+created_at: 2025-08-15T10:59:14.1120448+08:00
+privacy: PRIVACY.md
+repo: https://github.com/yigangzhang/dify-plugin-pdf-ocr-via-aliyun.git
+verified: false

@@ -14,17 +14,31 @@ description:
 parameters:
   - name: api_key
     type: secret-input
-    required: false
+    required: true
     label:
       en_US: API Key
       zh_Hans: API Key
       pt_BR: API Key
     human_description:
       en_US: "Optional. Override provider API Key for this call."
-      zh_Hans: "可选。为本次调用覆盖 Provider 的 API Key。"
+      zh_Hans: "为本次调用覆盖 Provider 的 API Key。"
       pt_BR: "Opcional. Substitui a chave de API do provedor para esta chamada."
     llm_description: "Optional override of API key."
     form: llm
+  - name: model
+    type: string
+    required: false
+    default: "qwen-vl-ocr"
+    label:
+      en_US: Model
+      zh_Hans: 模型
+      pt_BR: Modelo
+    human_description:
+      en_US: "OCR model to use. Default is qwen-vl-ocr."
+      zh_Hans: "使用的OCR模型。默认为qwen-vl-ocr。"
+      pt_BR: "Modelo OCR a ser usado. Padrão é qwen-vl-ocr."
+    llm_description: "The OCR model to use for text extraction."
+    form: form
   - name: prompt
     type: string
     required: true

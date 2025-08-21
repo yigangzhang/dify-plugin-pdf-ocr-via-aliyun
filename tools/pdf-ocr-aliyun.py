@@ -40,11 +40,13 @@ class PdfOcrAliyunTool(Tool):
             })
             return
 
-        # Allow per-call api_key override; fallback to provider credentials
+        # Allow per-call api_key and model override; fallback to provider credentials
         override_key = tool_parameters.get("api_key")
         api_key = str((override_key if override_key is not None else self.runtime.credentials.get("api_key")) or "").strip()
         base_url = str(self.runtime.credentials.get("base_url") or "https://dashscope.aliyuncs.com/compatible-mode/v1").strip()
-        model = str(self.runtime.credentials.get("model") or "qwen-vl-ocr").strip()
+        
+        override_model = tool_parameters.get("model")
+        model = str((override_model if override_model is not None else self.runtime.credentials.get("model")) or "qwen-vl-ocr").strip()
 
         client_kwargs: dict[str, Any] = {"api_key": api_key}
         if base_url:

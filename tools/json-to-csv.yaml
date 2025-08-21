@@ -1,0 +1,43 @@
+identity:
+  name: "json-to-csv"
+  author: "sam-zhang"
+  label:
+    en_US: "JSON to CSV Converter"
+    zh_Hans: "JSON转CSV转换器"
+    pt_BR: "Conversor JSON para CSV"
+description:
+  human:
+    en_US: "Convert array of JSON strings to CSV format and generate downloadable file."
+    zh_Hans: "将JSON字符串数组转换为CSV格式并生成可下载文件。"
+    pt_BR: "Converte array de strings JSON para formato CSV e gera arquivo para download."
+  llm: "Convert array of JSON strings to CSV format and return as downloadable file."
+parameters:
+  - name: json_data
+    type: string
+    required: true
+    label:
+      en_US: JSON Data
+      zh_Hans: JSON数据
+      pt_BR: Dados JSON
+    human_description:
+      en_US: "JSON array containing multiple JSON strings to convert to CSV format. Example: ['{\"name\":\"John\"}', '{\"name\":\"Jane\"}']"
+      zh_Hans: "包含多个JSON字符串的JSON数组，用于转换为CSV格式。示例：['{\"name\":\"John\"}', '{\"name\":\"Jane\"}']"
+      pt_BR: "Array JSON contendo múltiplas strings JSON para converter para CSV. Exemplo: ['{\"name\":\"John\"}', '{\"name\":\"Jane\"}']"
+    llm_description: "JSON array of JSON strings to convert to CSV format."
+    form: llm
+  - name: filename
+    type: string
+    required: false
+    label:
+      en_US: Filename
+      zh_Hans: 文件名
+      pt_BR: Nome do Arquivo
+    human_description:
+      en_US: "Optional filename for the CSV file (without extension)."
+      zh_Hans: "CSV文件的可选文件名（不含扩展名）。"
+      pt_BR: "Nome opcional para o arquivo CSV (sem extensão)."
+    llm_description: "Filename for the generated CSV file."
+    form: llm
+extra:
+  python:
+    source: tools/json-to-csv.py

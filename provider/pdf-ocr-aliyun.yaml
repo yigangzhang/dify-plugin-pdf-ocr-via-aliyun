@@ -55,6 +55,7 @@ identity:
 
 tools:
   - tools/pdf-ocr-aliyun.yaml
+  - tools/json-to-csv.yaml
 extra:
   python:
     source: provider/pdf-ocr-aliyun.py

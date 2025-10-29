@@ -1,0 +1,70 @@
+identity:
+  name: "smart-doc-parser"
+  author: "sam-zhang"
+  label:
+    en_US: "Smart Document Parser"
+    zh_Hans: "智能文档解析器"
+    pt_BR: "Analisador Inteligente de Documentos"
+description:
+  human:
+    en_US: "Intelligently extracts text from various file types (PDF, DOC, DOCX, PNG, JPG). Automatically uses OCR for image-based files and direct text extraction for text-based documents."
+    zh_Hans: "智能提取各种文件类型（PDF、DOC、DOCX、PNG、JPG）中的文本。自动对基于图像的文件使用 OCR，对基于文本的文档进行直接文本提取。"
+    pt_BR: "Extrai inteligentemente texto de vários tipos de arquivo (PDF, DOC, DOCX, PNG, JPG). Usa automaticamente OCR para arquivos baseados em imagem e extração direta de texto para documentos baseados em texto."
+  llm: "Given a file (image, PDF, DOC, or DOCX) and a prompt describing fields to extract, automatically determines the best processing method (OCR vs direct text extraction) and returns structured JSON."
+parameters:
+  - name: api_key
+    type: secret-input
+    required: false
+    label:
+      en_US: API Key
+      zh_Hans: API Key
+      pt_BR: API Key
+    human_description:
+      en_US: "Optional. Override provider API Key for OCR processing (only used for images and scanned PDFs)."
+      zh_Hans: "可选。为 OCR 处理覆盖提供商 API Key（仅用于图像和扫描的 PDF）。"
+      pt_BR: "Opcional. Substitui a chave de API do provedor para processamento OCR (usado apenas para imagens e PDFs digitalizados)."
+    llm_description: "Optional override of API key for OCR processing."
+    form: llm
+  - name: model
+    type: string
+    required: false
+    default: "qwen-vl-ocr"
+    label:
+      en_US: OCR Model
+      zh_Hans: OCR 模型
+      pt_BR: Modelo OCR
+    human_description:
+      en_US: "OCR model to use for images and scanned PDFs. Default is qwen-vl-ocr. Not used for direct text extraction."
+      zh_Hans: "用于图像和扫描 PDF 的 OCR 模型。默认为 qwen-vl-ocr。不用于直接文本提取。"
+      pt_BR: "Modelo OCR para usar em imagens e PDFs digitalizados. Padrão é qwen-vl-ocr. Não usado para extração direta de texto."
+    llm_description: "The OCR model to use for image-based document processing."
+    form: form
+  - name: prompt
+    type: string
+    required: true
+    label:
+      en_US: Extraction Prompt
+      zh_Hans: 提取提示词
+      pt_BR: Prompt de Extração
+    human_description:
+      en_US: "Describe the fields to extract and desired output structure. For direct text extraction, basic field detection is applied. For OCR processing, this prompt is sent to the AI model."
+      zh_Hans: "描述需要提取的字段和期望的输出结构。对于直接文本提取，应用基本字段检测。对于 OCR 处理，此提示发送给 AI 模型。"
+      pt_BR: "Descreva os campos a extrair e a estrutura de saída desejada. Para extração direta de texto, detecção básica de campos é aplicada. Para processamento OCR, este prompt é enviado ao modelo de IA."
+    llm_description: "Instructions for what fields to extract and the desired output structure."
+    form: llm
+  - name: file_url
+    type: string
+    required: true
+    label:
+      en_US: File URL
+      zh_Hans: 文件 URL
+      pt_BR: URL do Arquivo
+    human_description:
+      en_US: "File URL to process. Supports images (PNG, JPG, JPEG), PDFs (both scanned and text-based), and Word documents (DOC, DOCX). Can be a plain URL string, JSON string, object with url/file_url/src field, or a list from previous node output."
+      zh_Hans: "要处理的文件 URL。支持图像（PNG、JPG、JPEG）、PDF（扫描和基于文本的）以及 Word 文档（DOC、DOCX）。可以是纯 URL 字符串、JSON 字符串、包含 url/file_url/src 字段的对象，或上游节点返回的列表。"
+      pt_BR: "URL do arquivo para processar. Suporta imagens (PNG, JPG, JPEG), PDFs (digitalizados e baseados em texto) e documentos Word (DOC, DOCX). Pode ser uma URL simples, string JSON, objeto com campo url/file_url/src, ou uma lista de um nó anterior."
+    llm_description: "File URL to analyze - supports images, PDFs, DOC, and DOCX files (string or object with a url field)."
+    form: llm
+extra:
+  python:
+    source: tools/smart-doc-parser.py

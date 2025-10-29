@@ -1,4 +1,18 @@
-dify_plugin>=0.2.0,<0.3.0
+dify_plugin>=0.5.0,<0.6.0
 openai>=1.40.0
 pypdfium2>=4.30.0
 Pillow>=10.0.0
+
+# Additional dependencies for Smart Document Parser
+PyMuPDF>=1.23.0  # For direct PDF text extraction and scanned detection
+python-docx>=0.8.11  # For DOCX file processing
+PyPDF2>=3.0.1  # Fallback PDF processing library
+requests>=2.25.0  # For file downloading (already used but now explicit)
+# Optional: For legacy DOC file processing (requires system dependencies)
+# textract>=1.6.5  # Uncomment and install system dependencies (antiword, unrtf, etc.) for .doc support
+
+# Testing dependencies
+pytest>=7.4.0  # Testing framework
+pytest-mock>=3.11.0  # Mocking utilities for tests
+pytest-cov>=4.1.0  # Coverage reporting
+responses>=0.23.0  # Mock HTTP requests for testing

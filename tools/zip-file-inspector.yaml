@@ -1,0 +1,59 @@
+identity:
+  name: "zip-file-inspector"
+  author: "sam-zhang"
+  label:
+    en_US: "ZIP File Inspector"
+    zh_Hans: "ZIP 文件检查器"
+    pt_BR: "Inspetor de Arquivos ZIP"
+description:
+  human:
+    en_US: "Detects if a URL points to a ZIP archive, unzips it, and returns a list of file objects with filename, size, MIME type, SHA256, and optional base64 content."
+    zh_Hans: "检测给定 URL 是否为 ZIP 压缩包，解压并返回包含文件名、大小、MIME 类型、SHA256 以及可选 Base64 内容的文件对象列表。"
+    pt_BR: "Detecta se uma URL aponta para um arquivo ZIP, descompacta e retorna uma lista de arquivos com nome, tamanho, tipo MIME, SHA256 e conteúdo base64 opcional."
+  llm: "Given a file_url pointing to a ZIP archive, unzip and return structured metadata for each file."
+parameters:
+  - name: file_url
+    type: string
+    required: true
+    label:
+      en_US: File URL
+      zh_Hans: 文件 URL
+      pt_BR: URL do Arquivo
+    human_description:
+      en_US: "URL of the ZIP file to inspect."
+      zh_Hans: "要检查的 ZIP 文件 URL。"
+      pt_BR: "URL do arquivo ZIP para inspecionar."
+    llm_description: "The URL pointing to a ZIP file."
+    form: llm
+  - name: include_content_b64
+    type: boolean
+    required: false
+    default: false
+    label:
+      en_US: Include Base64 Content
+      zh_Hans: 包含 Base64 内容
+      pt_BR: Incluir Conteúdo Base64
+    human_description:
+      en_US: "If true, include base64 of each entry in the result."
+      zh_Hans: "若为 true，结果中包含每个文件的 Base64 内容。"
+      pt_BR: "Se verdadeiro, inclui base64 de cada entrada no resultado."
+    llm_description: "Whether to include base64 contents for each entry."
+    form: form
+  - name: max_files
+    type: number
+    required: false
+    label:
+      en_US: Max Files
+      zh_Hans: 最大文件数
+      pt_BR: Máximo de Arquivos
+    human_description:
+      en_US: "Limit the number of files processed from the ZIP (optional)."
+      zh_Hans: "限制从 ZIP 处理的文件数量（可选）。"
+      pt_BR: "Limitar o número de arquivos processados do ZIP (opcional)."
+    llm_description: "The maximum number of files to process."
+    form: form
+extra:
+  python:
+    source: tools/zip-file-inspector.py
+
+

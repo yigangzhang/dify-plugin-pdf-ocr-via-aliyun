@@ -1,12 +1,12 @@
-version: 0.1.0
+version: 0.1.1
 type: plugin
 author: sam-zhang
-name: pdf-ocr-aliyun
+name: smart-doc-parser
 label:
-  en_US: pdf-ocr-aliyun
-  ja_JP: pdf-ocr-aliyun
-  zh_Hans: pdf-ocr-aliyun
-  pt_BR: pdf-ocr-aliyun
+  en_US: smart-doc-parser
+  ja_JP: smart-doc-parser
+  zh_Hans: smart-doc-parser
+  pt_BR: smart-doc-parser
 description:
   en_US: convert photoscan pdf to text via aliyun ocr
   ja_JP: convert photoscan pdf to text via aliyun ocr
@@ -21,7 +21,7 @@ plugins:
   tools:
     - provider/pdf-ocr-aliyun.yaml
 meta:
-  version: 0.1.0
+  version: 0.1.1
   arch:
     - amd64
     - arm64

@@ -54,8 +54,8 @@ identity:
 #         en_US: "Access Token"
 
 tools:
+  - tools/zip-file-inspector.yaml
   - tools/smart-doc-parser.yaml
-  - tools/pdf-ocr-aliyun.yaml
   - tools/json-to-csv.yaml
 extra:
   python:

@@ -38,6 +38,20 @@ if smart_doc_parser_path.exists():
         sys.modules["tools.smart_doc_parser"] = smart_doc_parser_module
 
 
+# Create a virtual module for tools.zip_file_inspector (hyphenated filename)
+zip_file_inspector_path = project_root / "tools" / "zip-file-inspector.py"
+if zip_file_inspector_path.exists():
+    spec = importlib.util.spec_from_file_location(
+        "tools.zip_file_inspector",
+        zip_file_inspector_path,
+    )
+    if spec and spec.loader:
+        zip_file_inspector_module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(zip_file_inspector_module)
+        tools.zip_file_inspector = zip_file_inspector_module
+        sys.modules["tools.zip_file_inspector"] = zip_file_inspector_module
+
+
 @pytest.fixture
 def mock_runtime():
     """Mock runtime with credentials."""
